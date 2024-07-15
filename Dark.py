@@ -13,14 +13,26 @@ import ascii_magic
 from ascii_magic import AsciiArt
 os.system("pip3 install thedevilseye")
 os.system("sudo apt install lolcat")
+os.system("sudo gem install lolcat")
+from colorama import Fore, Style
+import math
+
+def rainbow_gradient_text(text):
+    for i, char in enumerate(text):
+        h = i / len(text)
+        r = int((1 + math.cos(h * 2 * math.pi)) / 2 * 255)
+        g = int((1 - math.cos((h * 2 + math.pi/3) * 2 * math.pi)) / 2 * 255)
+        b = int((1 - math.cos((h * 2 + 2*math.pi/3) * 2 * math.pi)) / 2 * 255)
+        color = f"\033[38;2;{r};{g};{b}m"
+        print(f"{color}{char}\033[0m", end="")
+    print()
 
 def change():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     os.chdir(script_dir)
 
 def ascii_banner():
-    lolcat -a -s 10 -d 60
-    print(''' 
+    rainbow_gradient_text("""
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣶⣄⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⠿⠛⠛⠛⠻⣿⣦⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣶⣶⣶⣤⣄⣴⣿⡿⠋⠀⠀⠀⠀⠀⠀⠘⣿⣧⡀⠀⠀
@@ -51,12 +63,18 @@ def ascii_banner():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-''')
 
+""")
 
-
+def rainbow_gradient_text2(text):
+    for i, char in enumerate(text):
+        r = int((i / len(text)) * 255)
+        g = int((1 - (i / len(text))) * 255)
+        color = f"\033[38;2;{r};{g};0m"
+        print(f"{color}{char}\033[0m", end="")
+    print()
 def header():
-    print("☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠---Welcome To DEEP DARK---☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠")                                       
+    rainbow_gradient_text2("☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠---Welcome To DEEP DARK---☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠")                                       
     print(" ")
 
 def dark_ascii():
@@ -322,8 +340,8 @@ def main():
     clear_screen()
     ascii_banner()
     header()
-    print("  \033[91m1\033[0m)\033[90m Underworld              \033[91m2\033[0m)\033[90m TheDevilsEye                \033[91m3\033[0m)\033[90m DarkDump                  \033[91m4\033[0m)\033[90m OnionSearch")
-    print("  \033[91m5\033[0m)\033[90m AnonGT")
+    rainbow_gradient_text("    1) Underworld        2) TheDevilsEye                3) DarkDump             4) OnionSearch            ")
+    rainbow_gradient_text2("    5) AnonGT            6) Go To HELL  ")
     print(" ")
     choice = input("\033[97mSelect an option: ")
 
@@ -406,6 +424,8 @@ def main():
         if choice == "about":
             os.system("sudo python3 AnonGT.py about")
             main()
+    elif choice == "6":
+        exit()
     else:
         print("\033[91m INVALID SELECTION\033[0m")
         time.sleep(1)
