@@ -251,7 +251,7 @@ def light_search():
     print("SEARCH TERMS ACCEPTED")
     time.sleep(.5)
     clear_screen()
-    subprocess.run(["thedevilseye", nmb, src])
+    subprocess.run(["thedevilseye", "-c", nmb, "-d", src])
     print("New Search?")
     choice = input("y/n: ")
     if choice == "y":
