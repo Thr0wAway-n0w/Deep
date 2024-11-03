@@ -236,14 +236,6 @@ def dark_search2():
 def light_search():
     clear_screen()
     dark_ascii()    
-    print("Request Number of Results")
-    nmb = input("Number of Onions: ")
-    clear_screen()
-    ascii_dark()
-    print("QUANTITY ACCEPTED")
-    time.sleep(.5)
-    clear_screen()
-    dark_ascii()
     print("Search Term")
     src = input("Search: ")
     clear_screen()
@@ -251,7 +243,7 @@ def light_search():
     print("SEARCH TERMS ACCEPTED")
     time.sleep(.5)
     clear_screen()
-    subprocess.run(["thedevilseye", "-c", nmb, "-d", src])
+    subprocess.run(["thedevilseye", src])
     print("New Search?")
     choice = input("y/n: ")
     if choice == "y":
@@ -262,12 +254,10 @@ def light_search():
         main()
 
 def new2():
-    print("Request Number of Results")
-    nmb2 = input("Number of Onions: ")
     clear_screen()
     print("Search Term")
     src2 = input("Search: ")
-    subprocess.run(["thedevilseye", "-c", nmb2, "-d", src2])
+    subprocess.run(["thedevilseye", src2])
     print("New Search?")
     choice = input("y/n: ")
     if choice == "y":
