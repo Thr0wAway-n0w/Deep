@@ -4,14 +4,15 @@ import subprocess
 import termcolor
 from termcolor import colored
 import colorama
-os.system("pip3 install tabulate")
+os.system("sudo apt install pipenv")
+os.system("pipenv run pip3 install tabulate")
 import tabulate
 from tabulate import tabulate
 import time
 from time import sleep
 import ascii_magic
 from ascii_magic import AsciiArt
-os.system("pip3 install thedevilseye")
+os.system("pipenv run pip3 install thedevilseye")
 os.system("sudo apt install lolcat")
 os.system("sudo gem install lolcat")
 from colorama import Fore, Style
@@ -293,7 +294,7 @@ def dump():
     dark_ascii()
     print(colored("Launching DARKDUMP: DarkWeb Search", 'red', attrs=['reverse', 'blink', 'bold']))
     time.sleep(2)
-    subprocess.run(["python3", "darkdump.py", "-q", DEEP, "-a", RESS, "-p"])
+    subprocess.run(["python3", "darkdump.py", "-q", DEEP, "-a", RESS, "-p", "-s"])
     print(" ")
     print("1) New Search")
     print("2) Main Menu")
