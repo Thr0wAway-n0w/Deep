@@ -4,6 +4,8 @@ import subprocess
 import termcolor
 from termcolor import colored
 import colorama
+os.system("git fetch")
+os.system("git pull")
 os.system("sudo apt install pipenv")
 os.system("pipenv run pip3 install tabulate")
 import tabulate
